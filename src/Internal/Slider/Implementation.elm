@@ -250,6 +250,12 @@ slider domId lift model options _ =
                 Decode.succeed (lift <| Init config.id_ config.min config.max config.step)
         , GlobalEvents.onResize <|
             Decode.succeed (lift <| Resize config.id_ config.min config.max config.step)
+        , GlobalEvents.onMouseUp <|
+            Decode.succeed (lift <| Resize config.id_ config.min config.max config.step)
+        , GlobalEvents.onPointerUp <|
+            Decode.succeed (lift <| Resize config.id_ config.min config.max config.step)
+        , GlobalEvents.onTouchEnd <|
+            Decode.succeed (lift <| Resize config.id_ config.min config.max config.step)
 
         , when (not config.disabled) <|
             case config.onChange of
